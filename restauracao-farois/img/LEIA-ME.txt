@@ -20,4 +20,4 @@ Situação atual:
 - Para mais exemplos de antes e depois, copie um bloco <div class="ba"> no index.html
   e use antes-depois-3.jpg, antes-depois-4.jpg...
 - og.jpg: gerada a partir do topo da página.
-- metodo.jpg ainda falta (gerar no ChatGPT com o prompt das mãos trabalhando, sem rosto).
+- metodo.jpg: imagem gerada por IA (ChatGPT), marcada como "Imagem ilustrativa" na página.
