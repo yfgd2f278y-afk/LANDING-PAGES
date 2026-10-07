@@ -11,3 +11,9 @@ og.jpg              Miniatura do link no WhatsApp/Facebook, 1200x630.
 
 Dica: comprima em https://squoosh.app (qualidade ~75) para a página carregar rápido.
 Enquanto uma imagem não existir, a página mostra o espaço reservado no lugar.
+
+Situação atual:
+- hero.jpg, antes-depois-1..4.jpg e og.jpg são ILUSTRAÇÕES geradas por código (não são fotos).
+  A página mostra "Imagens ilustrativas" na seção de antes e depois. Quando tiver fotos reais,
+  substitua os arquivos (mesmo nome) e pode remover esse aviso do index.html.
+- instrutor.jpg ainda falta: precisa ser uma foto real do instrutor.
