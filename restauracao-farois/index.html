@@ -107,7 +107,7 @@
   .feature h3 { font-size: 18px; line-height: 28px; text-transform: uppercase; }
   .feature p { margin-top: .5rem; color: var(--muted); }
 
-  /* Instrutor */
+  /* Como funciona (coluna com imagem) */
   .instructor { display: grid; gap: 2.5rem; align-items: center; }
   .instructor-photo { aspect-ratio: 4/5; border-radius: 12px; border: 1px solid var(--primary); overflow: hidden;
     background: linear-gradient(160deg, #2A2D35, #111216); display: grid; place-items: center; color: var(--muted-dark); font-size: 14px; }
@@ -115,6 +115,12 @@
   .instructor-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
   .instructor p { color: var(--muted-dark); margin-bottom: 1rem; }
   .instructor p strong { color: #fff; }
+  .steps { list-style: none; display: grid; gap: 1rem; margin: 1.5rem 0; }
+  .steps li { display: flex; gap: 1rem; align-items: flex-start; }
+  .step-n { flex: none; width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: #fff; font-weight: 800; display: grid; place-items: center; box-shadow: 0 0 16px rgba(253,63,63,.35); }
+  .steps strong { display: block; color: #fff; font-size: 16px; margin-bottom: .15rem; }
+  .steps span:not(.step-n) { color: var(--muted-dark); font-size: 15px; }
 
   /* Antes / Depois */
   .ba { position: relative; border-radius: .75rem; overflow: hidden; aspect-ratio: 4/3; background: #2A2D35; }
@@ -294,22 +300,24 @@
   </div>
 </section>
 
-<!-- ============ INSTRUTOR ============ -->
+<!-- ============ COMO FUNCIONA O MÉTODO ============ -->
 <section class="section dark">
   <div class="container instructor">
     <div class="instructor-photo">
-      Foto do instrutor (4:5)
-      <img src="img/instrutor.jpg" alt="Instrutor do Método Farol Cristal restaurando um farol" loading="lazy" onerror="this.remove()">
+      Imagem do método (4:5)
+      <img src="img/metodo.jpg" alt="Mãos com luvas polindo um farol, metade já cristalina e metade ainda amarelada" loading="lazy" onerror="this.remove()">
     </div>
     <div>
-      <h2 class="title" style="text-align:left">Quem vai te <span class="red">ensinar</span></h2>
-      <p><strong>[Nome do instrutor]</strong> trabalha com estética automotiva há <strong>[X] anos</strong> e já devolveu o brilho a <strong>[número] faróis</strong> de clientes.</p>
-      <p>Depois de muito tentativa e erro — produto que amarela de novo em 2 meses, lixa errada que risca, verniz que escorre — ele reuniu num método simples só o que <strong>realmente funciona</strong> e dura.</p>
-      <p>Nada de enrolação técnica: é o mesmo processo que ele usa com clientes, mostrado de perto, para você copiar.</p>
+      <h2 class="title" style="text-align:left">Como funciona o <span class="red">método</span></h2>
+      <p>Sem segredo e sem enrolação técnica: são <strong>4 etapas simples</strong>, na ordem certa. É essa sequência que faz o farol ficar transparente — e <strong>continuar assim</strong>.</p>
+      <ol class="steps">
+        <li><span class="step-n">1</span><div><strong>Proteger e lixar</strong><span>Você isola a lataria e remove a camada amarelada e oxidada com a sequência certa de lixas, sem riscar.</span></div></li>
+        <li><span class="step-n">2</span><div><strong>Polir</strong><span>O polimento devolve a transparência de vidro à lente, com ou sem máquina.</span></div></li>
+        <li><span class="step-n">3</span><div><strong>Proteger contra o sol</strong><span>A etapa que a maioria pula: a proteção UV que impede o farol de amarelar de novo em poucas semanas.</span></div></li>
+        <li><span class="step-n">4</span><div><strong>Entregar e cobrar</strong><span>Como mostrar o antes e depois, quanto cobrar e como conseguir os próximos clientes.</span></div></li>
+      </ol>
       <div class="chips">
-        <div class="glass chip"><span class="ico ok">✓</span>[X] anos de experiência</div>
-        <div class="glass chip"><span class="ico ok">✓</span>[N]+ faróis restaurados</div>
-        <div class="glass chip"><span class="ico ok">✓</span>Método testado na prática</div>
+        <div class="glass chip"><span class="ico ok">✓</span>Passo a passo mostrado de perto</div>
         <div class="glass chip"><span class="ico ok">✓</span>Linguagem simples, sem tecniquês</div>
       </div>
     </div>
