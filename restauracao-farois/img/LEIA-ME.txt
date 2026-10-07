@@ -13,7 +13,10 @@ Dica: comprima em https://squoosh.app (qualidade ~75) para a página carregar r�
 Enquanto uma imagem não existir, a página mostra o espaço reservado no lugar.
 
 Situação atual:
-- hero.jpg, antes-depois-1..4.jpg e og.jpg são ILUSTRAÇÕES geradas por código (não são fotos).
-  A página mostra "Imagens ilustrativas" na seção de antes e depois. Quando tiver fotos reais,
+- hero.jpg e antes-depois-1/2.jpg: imagens geradas por IA (ChatGPT). A página mostra
+  "Imagens ilustrativas" no antes e depois. Quando tiver fotos reais dos seus serviços,
   substitua os arquivos (mesmo nome) e pode remover esse aviso do index.html.
+- Para mais exemplos de antes e depois, copie um bloco <div class="ba"> no index.html
+  e use antes-depois-3.jpg, antes-depois-4.jpg...
+- og.jpg: gerada a partir do topo da página.
 - instrutor.jpg ainda falta: precisa ser uma foto real do instrutor.
