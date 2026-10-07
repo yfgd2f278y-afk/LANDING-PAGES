@@ -453,7 +453,7 @@
       <p class="from">Acesso completo por apenas</p>
       <p class="price"><small>R$</small>19,90</p>
       <p class="price-sub">Pagamento único • Sem mensalidade</p>
-      <a href="https://SEU-CHECKOUT-AQUI" class="cta checkout">Quero meu acesso agora</a>
+      <a href="https://pay.kiwify.com.br/aGCHs3F" class="cta checkout">Quero meu acesso agora</a>
       <p class="secure">🔒 Compra 100% segura • Pix, cartão ou boleto • Acesso enviado por e-mail</p>
     </div>
   </div>
@@ -492,7 +492,7 @@
   <div class="container">
     <h2>Daqui a 1 hora seus faróis podem estar <span class="red">novos de novo</span></h2>
     <p class="sub">Você pode continuar olhando para esse farol amarelado — ou investir R$ 19,90, seguir o passo a passo e ver a diferença hoje mesmo. Com 7 dias de garantia, a única coisa que você arrisca é ficar como está.</p>
-    <div class="cta-wrap"><a href="https://SEU-CHECKOUT-AQUI" class="cta checkout">Quero começar agora por R$ 19,90</a></div>
+    <div class="cta-wrap"><a href="https://pay.kiwify.com.br/aGCHs3F" class="cta checkout">Quero começar agora por R$ 19,90</a></div>
     <p class="micro">Acesso imediato • Garantia de 7 dias • Certificado incluído</p>
   </div>
 </section>
@@ -514,8 +514,11 @@
 
 <script>
   // Link do checkout em um só lugar
-  var CHECKOUT_URL = "https://SEU-CHECKOUT-AQUI";
-  document.querySelectorAll(".checkout").forEach(function (a) { a.href = CHECKOUT_URL; });
+  var CHECKOUT_URL = "https://pay.kiwify.com.br/aGCHs3F";
+  // Repassa UTMs/parâmetros do anúncio (ex.: ?utm_source=fb) para o checkout da Kiwify
+  var qs = window.location.search.replace(/^\?/, "");
+  var checkoutHref = CHECKOUT_URL + (qs ? (CHECKOUT_URL.indexOf("?") > -1 ? "&" : "?") + qs : "");
+  document.querySelectorAll(".checkout").forEach(function (a) { a.href = checkoutHref; });
   document.getElementById("y").textContent = new Date().getFullYear();
 
   // Barra fixa no mobile depois do hero (some quando a oferta está visível)
