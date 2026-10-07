@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Método Farol Cristal — Restauração de Faróis</title>
 <meta name="description" content="Aprenda a deixar faróis amarelados e opacos com cara de novos, em casa, com material barato. Mini curso online por R$ 19,90 com garantia de 7 dias.">
+<meta property="og:title" content="Método Farol Cristal — Restauração de Faróis">
+<meta property="og:description" content="Deixe faróis amarelados com cara de novos em menos de 1 hora. Mini curso por R$ 19,90.">
+<meta property="og:image" content="img/og.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;700;800&display=swap" rel="stylesheet">
@@ -102,13 +105,14 @@
   .instructor { display: grid; gap: 2.5rem; align-items: center; }
   .instructor-photo { aspect-ratio: 4/5; border-radius: 12px; border: 1px solid var(--primary); overflow: hidden;
     background: linear-gradient(160deg, #2A2D35, #111216); display: grid; place-items: center; color: var(--muted-dark); font-size: 14px; }
-  .instructor-photo img { width: 100%; height: 100%; object-fit: cover; }
+  .instructor-photo { position: relative; }
+  .instructor-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
   .instructor p { color: var(--muted-dark); margin-bottom: 1rem; }
   .instructor p strong { color: #fff; }
 
   /* Antes / Depois */
   .ba { position: relative; border-radius: .75rem; overflow: hidden; aspect-ratio: 4/3; background: #2A2D35; }
-  .ba img { width: 100%; height: 100%; object-fit: cover; }
+  .ba img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
   .ba-half { display: grid; grid-template-columns: 1fr 1fr; height: 100%; }
   .ba-half > div { position: relative; display: grid; place-items: center; color: var(--muted-dark); font-size: 13px; }
   .ba-half > div:first-child { background: linear-gradient(160deg, #6b5a2c, #3b3420); }
@@ -288,8 +292,8 @@
 <section class="section dark">
   <div class="container instructor">
     <div class="instructor-photo">
-      <!-- Troque pela foto real do instrutor: <img src="img/instrutor.jpg" alt="Foto do instrutor"> -->
       Foto do instrutor (4:5)
+      <img src="img/instrutor.jpg" alt="Instrutor do Método Farol Cristal restaurando um farol" loading="lazy" onerror="this.remove()">
     </div>
     <div>
       <h2 class="title" style="text-align:left">Quem vai te <span class="red">ensinar</span></h2>
@@ -353,15 +357,19 @@
     <h2 class="title">Olha a <span class="red">diferença</span> que 1 hora faz</h2>
     <p class="subtitle">Faróis reais restaurados com o método que você vai aprender. Sem filtro, sem truque de luz.</p>
     <div class="grid md-2">
-      <!-- Troque cada bloco por <img src="img/antes-depois-1.jpg" alt="Farol antes e depois da restauração"> -->
+      <!-- Imagens: img/antes-depois-1.jpg … img/antes-depois-4.jpg (4:3, antes à esquerda e depois à direita) -->
       <div class="ba"><span class="badge before">ANTES</span><span class="badge after">DEPOIS</span>
-        <div class="ba-half"><div>foto antes</div><div>foto depois</div></div></div>
+        <div class="ba-half"><div>foto antes</div><div>foto depois</div></div>
+        <img src="img/antes-depois-1.jpg" alt="Farol antes e depois da restauração — exemplo 1" loading="lazy" onerror="this.remove()"></div>
       <div class="ba"><span class="badge before">ANTES</span><span class="badge after">DEPOIS</span>
-        <div class="ba-half"><div>foto antes</div><div>foto depois</div></div></div>
+        <div class="ba-half"><div>foto antes</div><div>foto depois</div></div>
+        <img src="img/antes-depois-2.jpg" alt="Farol antes e depois da restauração — exemplo 2" loading="lazy" onerror="this.remove()"></div>
       <div class="ba"><span class="badge before">ANTES</span><span class="badge after">DEPOIS</span>
-        <div class="ba-half"><div>foto antes</div><div>foto depois</div></div></div>
+        <div class="ba-half"><div>foto antes</div><div>foto depois</div></div>
+        <img src="img/antes-depois-3.jpg" alt="Farol antes e depois da restauração — exemplo 3" loading="lazy" onerror="this.remove()"></div>
       <div class="ba"><span class="badge before">ANTES</span><span class="badge after">DEPOIS</span>
-        <div class="ba-half"><div>foto antes</div><div>foto depois</div></div></div>
+        <div class="ba-half"><div>foto antes</div><div>foto depois</div></div>
+        <img src="img/antes-depois-4.jpg" alt="Farol antes e depois da restauração — exemplo 4" loading="lazy" onerror="this.remove()"></div>
     </div>
     <div class="cta-wrap"><a href="#oferta" class="cta">Quero esse resultado</a></div>
   </div>

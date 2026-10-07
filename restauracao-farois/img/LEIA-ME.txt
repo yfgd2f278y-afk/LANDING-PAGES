@@ -1,0 +1,13 @@
+Coloque aqui as imagens da página (JPG, nomes exatamente assim):
+
+hero.jpg            Fundo do topo. 1920x1080 ou maior. Deixe o lado esquerdo escuro/limpo
+                    (o texto fica ali) e o farol/instrutor do lado direito.
+instrutor.jpg       Foto do instrutor, vertical 4:5 (ex.: 800x1000).
+antes-depois-1.jpg  Antes e depois lado a lado, 4:3 (ex.: 1200x900):
+antes-depois-2.jpg  ANTES na metade esquerda, DEPOIS na metade direita
+antes-depois-3.jpg  (as etiquetas ANTES/DEPOIS já são colocadas pela página).
+antes-depois-4.jpg
+og.jpg              Miniatura do link no WhatsApp/Facebook, 1200x630.
+
+Dica: comprima em https://squoosh.app (qualidade ~75) para a página carregar rápido.
+Enquanto uma imagem não existir, a página mostra o espaço reservado no lugar.
