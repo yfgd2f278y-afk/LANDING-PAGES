@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Método Farol Cristal — Restauração de Faróis</title>
+<meta name="description" content="Aprenda a deixar faróis amarelados e opacos com cara de novos, em casa, com material barato. Mini curso online por R$ 19,90 com garantia de 7 dias.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #FD3F3F;
+    --primary-dark: #E00606;
+    --text: #24272D;
+    --bg: #F1F2F3;
+    --bg-dark: #1A1C20;
+    --bg-darkest: #0D0E10;
+    --card: #FFFFFF;
+    --muted: #7A7981;
+    --muted-dark: #9E9EA3;
+    --border: #D1D1D1;
+    --success: #21C45D;
+    --danger: #EF4343;
+    --star: #F59F0A;
+    --radius: .5rem;
+    --container: 1100px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: "Sora", sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; -webkit-font-smoothing: antialiased; }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+
+  .container { max-width: var(--container); margin: 0 auto; width: 100%; }
+  .section { padding: 3.5rem 1rem; }
+  .light { background: var(--bg); color: var(--text); }
+  .dark { background: var(--bg-dark); color: #fff; }
+  .final-gradient { position: relative; background: radial-gradient(#26282E, var(--bg-darkest)); color: #fff; }
+  .final-gradient::before { content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: repeating-linear-gradient(135deg, rgba(255,255,255,.016) 0 1px, transparent 1px 25px); }
+  .final-gradient > * { position: relative; }
+
+  h2.title { font-size: 24px; line-height: 1.25; font-weight: 700; text-transform: uppercase; text-align: center; margin-bottom: 1rem; }
+  .subtitle { text-align: center; max-width: 680px; margin: 0 auto 3rem; color: var(--muted); font-size: 16px; }
+  .dark .subtitle, .final-gradient .subtitle { color: var(--muted-dark); }
+  .red { color: var(--primary); }
+
+  /* CTA */
+  .cta { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; text-align: center;
+    padding: 18px 40px; border-radius: var(--radius); font: 700 18px/1.4 "Sora", sans-serif; text-transform: uppercase;
+    letter-spacing: .05em; color: #fff; text-decoration: none; background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    filter: drop-shadow(0 4px 12px rgba(253,63,63,.4)); animation: pulse 3s ease-in-out infinite; transition: all .3s; will-change: transform; }
+  .cta:hover { transform: scale(1.04); filter: drop-shadow(0 8px 18px rgba(253,63,63,.6)); animation-play-state: paused; }
+  .cta:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+  @keyframes pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.03); } }
+  @media (prefers-reduced-motion: reduce) { .cta { animation: none; } html { scroll-behavior: auto; } }
+  .cta-wrap { text-align: center; margin-top: 2.5rem; }
+  .micro { margin-top: 1rem; font-size: 13px; color: var(--muted); }
+  .dark .micro, .final-gradient .micro, .hero .micro { color: var(--muted-dark); }
+
+  /* Glass */
+  .glass { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.08); border-radius: var(--radius); }
+  .chip { display: flex; align-items: flex-start; gap: .75rem; padding: .75rem 1rem; font-size: 14px; line-height: 20px; color: #fff; text-align: left; }
+  .ico { flex: none; width: 22px; height: 22px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; }
+  .ico.ok { background: rgba(34,197,94,.15); color: var(--success); }
+  .ico.no { background: rgba(253,63,63,.15); color: var(--danger); }
+
+  /* Hero */
+  .hero { position: relative; background: #010103; color: #fff; padding: 110px 1rem 48px; overflow: hidden; }
+  .hero-bg { position: absolute; inset: 0; background:
+      radial-gradient(60% 70% at 85% 30%, rgba(253,63,63,.22), transparent 60%),
+      radial-gradient(40% 50% at 75% 60%, rgba(255,255,255,.06), transparent 70%),
+      url("img/hero.jpg") center top / cover no-repeat; }
+  .hero-inner { position: relative; z-index: 1; max-width: 1250px; margin: 0 auto; }
+  .hero-col { text-align: center; }
+  .logo { display: inline-flex; align-items: center; gap: .6rem; font-weight: 800; font-size: 18px; letter-spacing: .04em; margin-bottom: 2rem; text-transform: uppercase; }
+  .logo-mark { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); display: grid; place-items: center; box-shadow: 0 0 20px rgba(253,63,63,.5); }
+  .eyebrow { display: inline-block; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; padding: .4rem .9rem; border-radius: 999px; background: rgba(253,63,63,.15); color: #FF8A8A; border: 1px solid rgba(253,63,63,.35); margin-bottom: 1.25rem; }
+  .hero h1 { font-size: 28px; line-height: 1.1; font-weight: 700; text-transform: uppercase; }
+  .hero .lead { margin: 1.5rem auto 0; font-size: 17px; line-height: 1.7; color: var(--muted-dark); max-width: 550px; }
+  .hero .lead strong { color: #fff; }
+  .chips { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin-top: 2rem; }
+  .price-tag { margin-top: 2rem; font-size: 15px; color: var(--muted-dark); }
+  .price-tag b { color: #fff; font-size: 22px; }
+
+  /* Cards */
+  .grid { display: grid; gap: 1.25rem; }
+  .card { background: var(--card); border-radius: .75rem; padding: 2rem; box-shadow: 0 1px 2px rgba(0,0,0,.05); }
+  .card h3 { font-size: 20px; line-height: 28px; margin-bottom: 1.5rem; }
+  .list { list-style: none; display: grid; gap: 1rem; }
+  .list li { display: flex; gap: .75rem; align-items: flex-start; font-size: 16px; }
+
+  .feature { background: var(--card); border-radius: .75rem; padding: 1.75rem; box-shadow: 0 1px 2px rgba(0,0,0,.05);
+    border-left: 4px solid var(--primary); transition: transform .3s; height: 100%; }
+  .feature:hover, .lesson:hover, .testi:hover { transform: translateY(-4px); }
+  .feature-ico { width: 48px; height: 48px; border-radius: 50%; background: var(--primary); color: #fff; display: grid; place-items: center; margin-bottom: 1rem; }
+  .feature h3 { font-size: 18px; line-height: 28px; text-transform: uppercase; }
+  .feature p { margin-top: .5rem; color: var(--muted); }
+
+  /* Instrutor */
+  .instructor { display: grid; gap: 2.5rem; align-items: center; }
+  .instructor-photo { aspect-ratio: 4/5; border-radius: 12px; border: 1px solid var(--primary); overflow: hidden;
+    background: linear-gradient(160deg, #2A2D35, #111216); display: grid; place-items: center; color: var(--muted-dark); font-size: 14px; }
+  .instructor-photo img { width: 100%; height: 100%; object-fit: cover; }
+  .instructor p { color: var(--muted-dark); margin-bottom: 1rem; }
+  .instructor p strong { color: #fff; }
+
+  /* Antes / Depois */
+  .ba { position: relative; border-radius: .75rem; overflow: hidden; aspect-ratio: 4/3; background: #2A2D35; }
+  .ba img { width: 100%; height: 100%; object-fit: cover; }
+  .ba-half { display: grid; grid-template-columns: 1fr 1fr; height: 100%; }
+  .ba-half > div { position: relative; display: grid; place-items: center; color: var(--muted-dark); font-size: 13px; }
+  .ba-half > div:first-child { background: linear-gradient(160deg, #6b5a2c, #3b3420); }
+  .ba-half > div:last-child { background: linear-gradient(160deg, #cfd6df, #8a95a3); color: #24272D; }
+  .badge { position: absolute; top: .75rem; border-radius: 4px; padding: .25rem .75rem; font-size: 12px; font-weight: 700; color: #fff; z-index: 2; }
+  .badge.before { left: .75rem; background: rgba(239,68,68,.85); }
+  .badge.after { right: .75rem; background: rgba(34,197,94,.85); }
+
+  /* Aulas */
+  .lesson { background: var(--card); border-radius: .75rem; padding: 1.75rem; box-shadow: 0 1px 2px rgba(0,0,0,.05); height: 100%; transition: transform .3s; }
+  .lesson .num { display: inline-block; font-size: 12px; font-weight: 700; color: var(--primary); text-transform: uppercase; letter-spacing: .06em; margin-bottom: .5rem; }
+  .lesson h3 { font-size: 16px; line-height: 24px; }
+  .lesson p { margin-top: .5rem; color: var(--muted); font-size: 15px; }
+
+  /* Depoimentos */
+  .testi { padding: 1.5rem; border-radius: .75rem; transition: transform .3s; }
+  .stars { color: var(--star); letter-spacing: 2px; margin-bottom: .75rem; }
+  .testi p { color: #e5e5e7; font-size: 15px; }
+  .testi .who { margin-top: 1rem; font-size: 14px; font-weight: 700; color: #fff; }
+  .testi .who span { display: block; font-weight: 400; color: var(--muted-dark); font-size: 13px; }
+  .placeholder-note { border: 1px dashed rgba(245,159,10,.6); color: #F5C26B; font-size: 12px; padding: .5rem .75rem; border-radius: 6px; text-align: center; margin-bottom: 1.5rem; }
+
+  /* Oferta */
+  .offer { display: grid; gap: 2.5rem; align-items: center; }
+  .offer h2 { font-size: 28px; line-height: 1.2; font-weight: 700; text-transform: uppercase; margin-bottom: 1rem; }
+  .offer-copy p { color: var(--muted-dark); margin-bottom: 1rem; }
+  .compare { display: grid; gap: .75rem; margin-top: 1.5rem; }
+  .compare div { display: flex; justify-content: space-between; gap: 1rem; padding: .85rem 1rem; font-size: 14px; }
+  .compare div b { white-space: nowrap; }
+  .compare .us { border-color: rgba(253,63,63,.6); background: rgba(253,63,63,.08); }
+  .pricing { max-width: 480px; margin: 0 auto; width: 100%; background: linear-gradient(#2A2D35, #1F2128); border-radius: 1rem;
+    padding: 2.5rem 25px; text-align: center; border: 2px solid var(--primary); box-shadow: 0 0 40px rgba(253,63,63,.15); }
+  .pill { display: inline-block; border-radius: 999px; padding: .4rem 1.25rem; font-size: 12px; font-weight: 700; color: #fff; background: var(--primary); text-transform: uppercase; letter-spacing: .05em; }
+  .pricing h3 { margin-top: 1.25rem; font-size: 20px; text-transform: uppercase; }
+  .pricing .incl { list-style: none; text-align: left; margin: 1.5rem 0; display: grid; gap: .75rem; font-size: 15px; }
+  .pricing .incl li { display: flex; gap: .65rem; align-items: flex-start; }
+  .pricing .from { color: var(--muted-dark); font-size: 14px; }
+  .pricing .price { font-size: 56px; font-weight: 800; line-height: 1; margin: .35rem 0; }
+  .pricing .price small { font-size: 22px; font-weight: 700; vertical-align: top; margin-right: .25rem; }
+  .pricing .price-sub { color: var(--muted-dark); font-size: 13px; margin-bottom: 1.5rem; }
+  .pricing .cta { width: 100%; padding: 18px 20px; }
+  .secure { margin-top: 1rem; font-size: 12px; color: var(--muted-dark); }
+
+  /* Garantia */
+  .guarantee { background: #1E2024; color: #fff; padding: 3rem 1rem; }
+  .guarantee-inner { display: grid; gap: 1.75rem; align-items: center; text-align: center; max-width: 900px; margin: 0 auto; }
+  .seal { width: 140px; height: 140px; margin: 0 auto; border-radius: 50%; border: 3px solid var(--primary); display: grid; place-items: center; text-align: center;
+    font-weight: 800; line-height: 1.05; box-shadow: 0 0 30px rgba(253,63,63,.25); }
+  .seal span { font-size: 44px; display: block; }
+  .seal small { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
+  .guarantee h3 { font-size: 20px; line-height: 28px; margin-bottom: .75rem; text-transform: uppercase; }
+  .guarantee p { color: var(--muted-dark); }
+
+  /* FAQ */
+  .faq { max-width: 780px; margin: 0 auto; display: grid; gap: .75rem; }
+  .faq details { background: var(--card); border-radius: var(--radius); box-shadow: 0 1px 2px rgba(0,0,0,.05); overflow: hidden; }
+  .faq summary { list-style: none; cursor: pointer; padding: 1.25rem; font-weight: 700; display: flex; justify-content: space-between; align-items: center; gap: 1rem; transition: background .2s; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary:hover { background: rgba(230,230,230,.5); }
+  .faq summary::after { content: "+"; color: var(--primary); font-size: 22px; line-height: 1; transition: transform .2s; }
+  .faq details[open] summary::after { transform: rotate(45deg); }
+  .faq details p { padding: 0 1.25rem 1.25rem; color: var(--muted); }
+
+  /* Final */
+  .final { text-align: center; }
+  .final h2 { font-size: 28px; line-height: 1.3; font-weight: 700; text-transform: uppercase; max-width: 820px; margin: 0 auto 1.25rem; }
+  .final p.sub { color: var(--muted-dark); max-width: 640px; margin: 0 auto; }
+
+  footer { background: var(--bg-darkest); color: #9CA3AF; padding: 2.5rem 1rem 6rem; text-align: center; font-size: 12px; }
+  footer nav { display: flex; justify-content: center; gap: 1.25rem; flex-wrap: wrap; margin-bottom: 1rem; font-size: 13px; }
+  footer a { text-decoration: none; }
+  footer a:hover { color: #fff; }
+  footer .disclaimer { max-width: 720px; margin: 1rem auto 0; line-height: 1.6; }
+
+  /* Barra fixa mobile */
+  .sticky { position: fixed; left: 0; right: 0; bottom: 0; z-index: 50; background: rgba(13,14,16,.95); backdrop-filter: blur(8px);
+    padding: .6rem 1rem; display: flex; align-items: center; justify-content: space-between; gap: .75rem; border-top: 1px solid rgba(255,255,255,.08);
+    transform: translateY(110%); transition: transform .3s; }
+  .sticky.show { transform: none; }
+  .sticky .s-price { color: #fff; font-size: 13px; line-height: 1.2; }
+  .sticky .s-price b { font-size: 18px; display: block; }
+  .sticky .cta { padding: 12px 18px; font-size: 14px; animation: none; }
+
+  @media (min-width: 640px) {
+    .sm-2 { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 768px) {
+    .section { padding: 5rem 1rem; }
+    h2.title { font-size: 36px; line-height: 1.15; }
+    .hero h1 { font-size: 42px; }
+    .md-2 { grid-template-columns: repeat(2, 1fr); }
+    .final h2 { font-size: 40px; line-height: 1.4; }
+    .offer h2 { font-size: 36px; }
+    .guarantee { padding: 50px 1rem; }
+    .guarantee-inner { grid-template-columns: 160px 1fr; text-align: left; }
+  }
+  @media (min-width: 1024px) {
+    .hero { padding: 60px 1rem; min-height: 850px; display: flex; align-items: center; }
+    .hero-inner { width: 100%; }
+    .hero-col { width: 50%; text-align: left; }
+    .hero .lead { margin-left: 0; }
+    .lg-3 { grid-template-columns: repeat(3, 1fr); }
+    .instructor { grid-template-columns: 5fr 7fr; }
+    .offer { grid-template-columns: 1fr 1fr; }
+    .pricing { margin: 0; }
+    .sticky { display: none; }
+    footer { padding-bottom: 2.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <div class="hero-col">
+      <div class="logo">
+        <span class="logo-mark" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><circle cx="9" cy="12" r="5"/><path d="M16 8h5M16 12h6M16 16h5"/></svg>
+        </span>
+        Farol Cristal
+      </div>
+      <br>
+      <span class="eyebrow">Mini curso online • Acesso imediato</span>
+      <h1>Transforme faróis <span class="red">amarelados e opacos</span> em faróis <span class="red">com cara de novos</span> — e cobre por isso</h1>
+      <p class="lead">
+        O passo a passo exato para restaurar faróis em <strong>menos de 1 hora</strong>, com material de loja de bairro,
+        mesmo que você <strong>nunca tenha encostado uma lixa num carro</strong>. Use no seu veículo ou transforme em renda extra já nesta semana.
+      </p>
+      <div class="chips">
+        <div class="glass chip"><span class="ico ok">✓</span>Aulas curtas e diretas ao ponto</div>
+        <div class="glass chip"><span class="ico ok">✓</span>Material barato e fácil de achar</div>
+        <div class="glass chip"><span class="ico ok">✓</span>Funciona sem máquina profissional</div>
+        <div class="glass chip"><span class="ico ok">✓</span>Certificado de conclusão</div>
+      </div>
+      <p class="price-tag">Tudo isso por apenas <b>R$ 19,90</b> — pagamento único</p>
+      <div style="margin-top:1.25rem">
+        <a href="#oferta" class="cta">Quero restaurar faróis</a>
+      </div>
+      <p class="micro">Acesso imediato • Garantia de 7 dias • Certificado incluído</p>
+    </div>
+  </div>
+</header>
+
+<!-- ============ PARA QUEM ============ -->
+<section class="section light">
+  <div class="container">
+    <h2 class="title">Esse mini curso <span class="red">é pra você?</span></h2>
+    <p class="subtitle">Seja honesto com você mesmo. Se você se identificar com a coluna da esquerda, esse é o melhor investimento de R$ 19,90 que você vai fazer este ano.</p>
+    <div class="grid md-2">
+      <div class="card">
+        <h3>✅ É pra você se…</h3>
+        <ul class="list">
+          <li><span class="ico ok">✓</span>Seu carro tem faróis amarelados e você tem vergonha de como ele está</li>
+          <li><span class="ico ok">✓</span>Você quer uma renda extra rápida, sem ponto comercial e sem investir alto</li>
+          <li><span class="ico ok">✓</span>Já trabalha com lavagem, estética ou mecânica e quer um serviço a mais pra vender</li>
+          <li><span class="ico ok">✓</span>Não quer pagar caro numa oficina por algo que dá pra fazer em casa</li>
+          <li><span class="ico ok">✓</span>Gosta de aprender fazendo, com passo a passo claro</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>❌ NÃO é pra você se…</h3>
+        <ul class="list">
+          <li><span class="ico no">✗</span>Procura dinheiro fácil sem colocar a mão na massa</li>
+          <li><span class="ico no">✗</span>Não está disposto a separar 1 hora para praticar</li>
+          <li><span class="ico no">✗</span>Acha que vai virar especialista sem treinar em pelo menos um farol</li>
+          <li><span class="ico no">✗</span>Prefere continuar pagando caro por um serviço que poderia fazer sozinho</li>
+        </ul>
+      </div>
+    </div>
+    <div class="cta-wrap"><a href="#oferta" class="cta">Sim, é pra mim</a></div>
+  </div>
+</section>
+
+<!-- ============ INSTRUTOR ============ -->
+<section class="section dark">
+  <div class="container instructor">
+    <div class="instructor-photo">
+      <!-- Troque pela foto real do instrutor: <img src="img/instrutor.jpg" alt="Foto do instrutor"> -->
+      Foto do instrutor (4:5)
+    </div>
+    <div>
+      <h2 class="title" style="text-align:left">Quem vai te <span class="red">ensinar</span></h2>
+      <p><strong>[Nome do instrutor]</strong> trabalha com estética automotiva há <strong>[X] anos</strong> e já devolveu o brilho a <strong>[número] faróis</strong> de clientes.</p>
+      <p>Depois de muito tentativa e erro — produto que amarela de novo em 2 meses, lixa errada que risca, verniz que escorre — ele reuniu num método simples só o que <strong>realmente funciona</strong> e dura.</p>
+      <p>Nada de enrolação técnica: é o mesmo processo que ele usa com clientes, mostrado de perto, para você copiar.</p>
+      <div class="chips">
+        <div class="glass chip"><span class="ico ok">✓</span>[X] anos de experiência</div>
+        <div class="glass chip"><span class="ico ok">✓</span>[N]+ faróis restaurados</div>
+        <div class="glass chip"><span class="ico ok">✓</span>Método testado na prática</div>
+        <div class="glass chip"><span class="ico ok">✓</span>Linguagem simples, sem tecniquês</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ POR QUE ============ -->
+<section class="section light">
+  <div class="container">
+    <h2 class="title">Por que restaurar faróis é a <span class="red">porta de entrada</span> mais fácil da estética automotiva</h2>
+    <p class="subtitle">Todo carro com alguns anos de uso sofre com isso. A demanda está estacionada em cada rua da sua cidade.</p>
+    <div class="grid md-2 lg-3">
+      <div class="feature">
+        <div class="feature-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+        <h3>Investimento mínimo</h3>
+        <p>Lixas, polidor e proteção. Com pouco dinheiro você já monta o kit para os primeiros serviços.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+        <h3>Serviço rápido</h3>
+        <p>Menos de 1 hora por par. Dá para fazer à noite, no fim de semana ou entre outros serviços.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l2-5h14l2 5v6H3z"/><circle cx="7" cy="15" r="1.5"/><circle cx="17" cy="15" r="1.5"/></svg></div>
+        <h3>Demanda em todo lugar</h3>
+        <p>O sol amarela o policarbonato de qualquer carro. Seus clientes estão na garagem do vizinho.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l2.5 5 5.5.8-4 3.9.9 5.5L12 15.6 7.1 18.2 8 12.7 4 8.8l5.5-.8z"/></svg></div>
+        <h3>Resultado que vende sozinho</h3>
+        <p>Uma foto de antes e depois convence mais que qualquer argumento. O cliente vê na hora.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h3>Mais segurança</h3>
+        <p>Farol limpo ilumina melhor à noite e ajuda a evitar problemas na vistoria. É estética e é segurança.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 8-8M14 7h7v7"/></svg></div>
+        <h3>Porta para outros serviços</h3>
+        <p>Quem confia em você no farol volta para polimento, higienização e mais. É o primeiro passo.</p>
+      </div>
+    </div>
+    <div class="cta-wrap"><a href="#oferta" class="cta">Quero aprender essa técnica</a></div>
+  </div>
+</section>
+
+<!-- ============ ANTES E DEPOIS ============ -->
+<section class="section dark">
+  <div class="container">
+    <h2 class="title">Olha a <span class="red">diferença</span> que 1 hora faz</h2>
+    <p class="subtitle">Faróis reais restaurados com o método que você vai aprender. Sem filtro, sem truque de luz.</p>
+    <div class="grid md-2">
+      <!-- Troque cada bloco por <img src="img/antes-depois-1.jpg" alt="Farol antes e depois da restauração"> -->
+      <div class="ba"><span class="badge before">ANTES</span><span class="badge after">DEPOIS</span>
+        <div class="ba-half"><div>foto antes</div><div>foto depois</div></div></div>
+      <div class="ba"><span class="badge before">ANTES</span><span class="badge after">DEPOIS</span>
+        <div class="ba-half"><div>foto antes</div><div>foto depois</div></div></div>
+      <div class="ba"><span class="badge before">ANTES</span><span class="badge after">DEPOIS</span>
+        <div class="ba-half"><div>foto antes</div><div>foto depois</div></div></div>
+      <div class="ba"><span class="badge before">ANTES</span><span class="badge after">DEPOIS</span>
+        <div class="ba-half"><div>foto antes</div><div>foto depois</div></div></div>
+    </div>
+    <div class="cta-wrap"><a href="#oferta" class="cta">Quero esse resultado</a></div>
+  </div>
+</section>
+
+<!-- ============ O QUE VAI APRENDER ============ -->
+<section class="section light">
+  <div class="container">
+    <h2 class="title">O que você vai <span class="red">aprender</span></h2>
+    <p class="subtitle">Do farol amarelado ao cliente satisfeito, em aulas curtas que você assiste no celular.</p>
+    <div class="grid md-2 lg-3">
+      <div class="lesson"><span class="num">Aula 01</span><h3>Por que o farol amarela (e como impedir que volte)</h3><p>Entenda o problema para nunca mais fazer um serviço que dura só 2 meses.</p></div>
+      <div class="lesson"><span class="num">Aula 02</span><h3>Kit enxuto: o que comprar e onde</h3><p>A lista exata de materiais baratos, com alternativas para cada item.</p></div>
+      <div class="lesson"><span class="num">Aula 03</span><h3>Preparação e proteção da lataria</h3><p>Como isolar a pintura para não marcar o carro do cliente.</p></div>
+      <div class="lesson"><span class="num">Aula 04</span><h3>Lixamento na sequência certa</h3><p>A ordem das lixas que tira o amarelado sem deixar riscos.</p></div>
+      <div class="lesson"><span class="num">Aula 05</span><h3>Polimento para transparência total</h3><p>Como devolver o brilho de vidro, com ou sem máquina.</p></div>
+      <div class="lesson"><span class="num">Aula 06</span><h3>Proteção UV que faz o resultado durar</h3><p>A etapa que a maioria pula — e que separa amador de profissional.</p></div>
+      <div class="lesson"><span class="num">Aula 07</span><h3>Erros que estragam o serviço</h3><p>Os deslizes mais comuns e como corrigir se algo der errado.</p></div>
+      <div class="lesson"><span class="num">Aula 08</span><h3>Quanto cobrar e como precificar</h3><p>Como calcular seu preço para ter lucro sem espantar o cliente.</p></div>
+      <div class="lesson"><span class="num">Aula 09</span><h3>Como conseguir os primeiros clientes</h3><p>Ideias simples para vender no bairro, no WhatsApp e nas redes.</p></div>
+    </div>
+    <div class="cta-wrap"><a href="#oferta" class="cta">Quero acessar as aulas</a></div>
+  </div>
+</section>
+
+<!-- ============ DEPOIMENTOS ============ -->
+<section class="section dark">
+  <div class="container">
+    <h2 class="title">Quem aplicou, <span class="red">teve resultado</span></h2>
+    <p class="subtitle">Veja o que alunos estão dizendo depois de colocar o método em prática.</p>
+    <p class="placeholder-note">⚠️ Substitua os cards abaixo por depoimentos REAIS de alunos (texto, nome e cidade, com autorização). Não publique estes textos de exemplo.</p>
+    <div class="grid md-2">
+      <div class="glass testi"><div class="stars">★★★★★</div><p>“[Depoimento real do aluno: qual era o problema, o que fez e qual resultado teve.]”</p><p class="who">[Nome do aluno]<span>[Cidade – UF]</span></p></div>
+      <div class="glass testi"><div class="stars">★★★★★</div><p>“[Depoimento real do aluno: qual era o problema, o que fez e qual resultado teve.]”</p><p class="who">[Nome do aluno]<span>[Cidade – UF]</span></p></div>
+      <div class="glass testi"><div class="stars">★★★★★</div><p>“[Depoimento real do aluno: qual era o problema, o que fez e qual resultado teve.]”</p><p class="who">[Nome do aluno]<span>[Cidade – UF]</span></p></div>
+      <div class="glass testi"><div class="stars">★★★★★</div><p>“[Depoimento real do aluno: qual era o problema, o que fez e qual resultado teve.]”</p><p class="who">[Nome do aluno]<span>[Cidade – UF]</span></p></div>
+    </div>
+    <div class="cta-wrap"><a href="#oferta" class="cta">Quero ser o próximo</a></div>
+  </div>
+</section>
+
+<!-- ============ OFERTA ============ -->
+<section class="section final-gradient" id="oferta">
+  <div class="container offer">
+    <div class="offer-copy">
+      <h2>Garantir seu acesso é <span class="red">simples e barato</span></h2>
+      <p>Pense bem: uma única restauração de faróis numa oficina costuma custar bem mais que isso. Aqui você aprende a fazer <strong style="color:#fff">quantas vezes quiser</strong>, no seu carro e no dos outros.</p>
+      <p>Um serviço feito já paga o curso várias vezes. O resto é lucro.</p>
+      <div class="compare">
+        <div class="glass"><span>Pagar uma oficina toda vez que amarelar</span><b>💸 caro e repetido</b></div>
+        <div class="glass"><span>Trocar o farol por um novo</span><b>💸💸 ainda mais caro</b></div>
+        <div class="glass us"><span>Aprender o Método Farol Cristal</span><b class="red">R$ 19,90 uma vez</b></div>
+      </div>
+    </div>
+    <div class="pricing">
+      <span class="pill">Oferta de lançamento</span>
+      <h3>Método Farol Cristal</h3>
+      <ul class="incl">
+        <li><span class="ico ok">✓</span>9 aulas práticas, do zero ao acabamento</li>
+        <li><span class="ico ok">✓</span>Lista de materiais baratos com alternativas</li>
+        <li><span class="ico ok">✓</span>Aula de precificação e primeiros clientes</li>
+        <li><span class="ico ok">✓</span>Assista no celular, quando e onde quiser</li>
+        <li><span class="ico ok">✓</span>Certificado de conclusão</li>
+        <li><span class="ico ok">✓</span>Garantia incondicional de 7 dias</li>
+      </ul>
+      <p class="from">Acesso completo por apenas</p>
+      <p class="price"><small>R$</small>19,90</p>
+      <p class="price-sub">Pagamento único • Sem mensalidade</p>
+      <a href="https://SEU-CHECKOUT-AQUI" class="cta checkout">Quero meu acesso agora</a>
+      <p class="secure">🔒 Compra 100% segura • Pix, cartão ou boleto • Acesso enviado por e-mail</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GARANTIA ============ -->
+<section class="guarantee">
+  <div class="guarantee-inner">
+    <div class="seal"><div><span>7</span><small>dias de<br>garantia</small></div></div>
+    <div>
+      <h3>Risco zero: ou você aprova, ou devolvemos 100%</h3>
+      <p>Entre, assista às aulas e teste o método. Se em até 7 dias você achar que não valeu cada centavo, é só pedir o reembolso que devolvemos todo o seu dinheiro. Sem perguntas, sem burocracia. O risco é todo nosso.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section light">
+  <div class="container">
+    <h2 class="title">Perguntas <span class="red">frequentes</span></h2>
+    <p class="subtitle">Ainda ficou alguma dúvida? Veja as respostas abaixo.</p>
+    <div class="faq">
+      <details><summary>Preciso ter experiência com carros?</summary><p>Não. O curso foi feito para iniciantes. Tudo é mostrado de perto, passo a passo, e você pode rever as aulas quantas vezes precisar.</p></details>
+      <details><summary>Preciso comprar máquina profissional?</summary><p>Não. Você aprende a técnica com materiais simples e baratos. A máquina deixa o serviço mais rápido, mas é opcional para começar.</p></details>
+      <details><summary>Como recebo o acesso?</summary><p>Logo após a confirmação do pagamento, você recebe por e-mail o login para a área de membros. No Pix e no cartão, a liberação costuma ser imediata.</p></details>
+      <details><summary>Por quanto tempo terei acesso?</summary><p>[Defina o prazo: ex. 1 ano / vitalício]. Assista no seu ritmo, no celular, tablet ou computador.</p></details>
+      <details><summary>O resultado dura quanto tempo?</summary><p>Depende principalmente da etapa de proteção UV — e é exatamente por isso que ela tem uma aula só dela. Feita do jeito certo, o resultado dura muito mais do que os "truques" caseiros que amarelam em semanas.</p></details>
+      <details><summary>Posso cobrar por esse serviço?</summary><p>Pode. Inclusive o curso tem uma aula sobre como precificar e conseguir os primeiros clientes.</p></details>
+      <details><summary>E se eu não gostar?</summary><p>Você tem 7 dias de garantia. Se não gostar por qualquer motivo, pede o reembolso e recebe 100% do valor de volta.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA FINAL ============ -->
+<section class="section final-gradient final">
+  <div class="container">
+    <h2>Daqui a 1 hora seus faróis podem estar <span class="red">novos de novo</span></h2>
+    <p class="sub">Você pode continuar olhando para esse farol amarelado — ou investir R$ 19,90, seguir o passo a passo e ver a diferença hoje mesmo. Com 7 dias de garantia, a única coisa que você arrisca é ficar como está.</p>
+    <div class="cta-wrap"><a href="https://SEU-CHECKOUT-AQUI" class="cta checkout">Quero começar agora por R$ 19,90</a></div>
+    <p class="micro">Acesso imediato • Garantia de 7 dias • Certificado incluído</p>
+  </div>
+</section>
+
+<footer>
+  <nav>
+    <a href="#">Termos de uso</a>
+    <a href="#">Política de privacidade</a>
+    <a href="mailto:contato@seudominio.com.br">Contato</a>
+  </nav>
+  <p>© <span id="y">2026</span> Farol Cristal. Todos os direitos reservados.</p>
+  <p class="disclaimer">Os resultados variam de pessoa para pessoa e dependem da aplicação correta da técnica e do estado de cada farol. Este produto não garante ganhos financeiros.</p>
+</footer>
+
+<div class="sticky" id="sticky" aria-hidden="true">
+  <div class="s-price">Método Farol Cristal<b>R$ 19,90</b></div>
+  <a href="#oferta" class="cta" tabindex="-1">Garantir acesso</a>
+</div>
+
+<script>
+  // Link do checkout em um só lugar
+  var CHECKOUT_URL = "https://SEU-CHECKOUT-AQUI";
+  document.querySelectorAll(".checkout").forEach(function (a) { a.href = CHECKOUT_URL; });
+  document.getElementById("y").textContent = new Date().getFullYear();
+
+  // Barra fixa no mobile depois do hero (some quando a oferta está visível)
+  var sticky = document.getElementById("sticky");
+  var hero = document.querySelector(".hero");
+  var offer = document.getElementById("oferta");
+  var heroOut = false, offerIn = false;
+  function update() { sticky.classList.toggle("show", heroOut && !offerIn); }
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver(function (e) { heroOut = !e[0].isIntersecting; update(); }).observe(hero);
+    new IntersectionObserver(function (e) { offerIn = e[0].isIntersecting; update(); }).observe(offer);
+  }
+</script>
+</body>
+</html>
